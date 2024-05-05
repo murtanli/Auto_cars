@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+div.contacts {
+    width: 100vw;
+    height: 30vh;
+    margin-bottom: 8vh;
+    background-color: #F1EEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+div.contacts>p, div.contacts>h1 {
+    width: 35vw;
+}
+div.contacts>h1 {
+    text-align: center;
+    font-size: 200%;
+    font-weight: 400;
+}
+div.contacts>h1>span {
+    color: #C10303;
+}
+div.contacts>p {
+    font-size: 130%;
+}
+div.contacts>p>span {
+    color: #ffffff;
+    background-color: #7E0000;
+    padding-left: 0.2%;
+    padding-right: 0.2%;
+}

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+div.block_rqst {
+    width: 100vw;
+    height: 100vh;
+    background-color: #F1EEEE;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+div.block_rqst>div.input_rqst {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* Загаловки */
+div.block_rqst>div.input_rqst>h1 {
+    font-size: 250%;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+}
+div.block_rqst>div.input_rqst>h2 {
+    font-size: 200%;
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    margin-bottom: 5%;
+}
+div.block_rqst>div.input_rqst>h2>span {
+    background-color: #7E0000;
+    font-weight: 400;
+    padding-left: 0.3%;
+    padding-right: 0.3%;
+    color: #ffffff;
+}
+/* Инпуты */
+div.block_rqst>div.input_rqst>div.name {
+    width: 70%;
+    height: 14%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+}
+div.block_rqst>div.input_rqst>div.name>p {
+    font-size: 150%;
+    margin-bottom: 1.5%;
+}
+div.block_rqst>div.input_rqst>div.name>input {
+    border: none;
+    border-bottom: 2px solid #000000;
+
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    margin-bottom: ;
+    margin-top: 0px;
+    font-size: 120%;
+    background-color: #e7e5e5;
+    transition: border-color 50ms ease-out;
+}
+div.block_rqst>div.input_rqst>div.name>input:focus {
+    content: none;
+    outline: 0;
+    box-shadow: none;
+    border-bottom-color: #026196;
+}
+
+
+div.block_rqst>div.input_rqst>div.phone {
+    width: 70%;
+    height: 14%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+}
+div.block_rqst>div.input_rqst>div.phone>p {
+    font-size: 150%;
+    margin-bottom: 1.5%;
+}
+div.block_rqst>div.input_rqst>div.phone>input {
+    border: none;
+    border-bottom: 2px solid #000000;
+
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    margin-bottom: ;
+    margin-top: 0px;
+    font-size: 120%;
+    background-color: #e7e5e5;
+    transition: border-color 50ms ease-out;
+}
+div.block_rqst>div.input_rqst>div.phone>input:focus {
+    content: none;
+    outline: 0;
+    box-shadow: none;
+    border-bottom-color: #026196;
+}
+
+
+div.block_rqst>div.input_rqst>div.car_input {
+    width: 70%;
+    height: 14%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7%;
+}
+div.block_rqst>div.input_rqst>div.car_input>p {
+    font-size: 150%;
+    margin-bottom: 1.5%;
+}
+div.block_rqst>div.input_rqst>div.car_input>input {
+    border: none;
+    border-bottom: 2px solid #000000;
+
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    font-size: 120%;
+    background-color: #e7e5e5;
+    transition: border-color 50ms ease-out;
+}
+div.block_rqst>div.input_rqst>div.car_input>input:focus {
+    content: none;
+    outline: 0;
+    box-shadow: none;
+    border-bottom-color: #026196;
+}
+
+/* Кнопка */
+div.block_rqst>div.input_rqst>button {
+    width: 35%;
+    height: 9%;
+    border-radius: 10px;
+    border: none;
+    background-color: #026196;
+    color: #ffffff;
+    font-size: 130%;
+}
+div.block_rqst>div.input_rqst>button:hover {
+    background-color: #01507a;
+    cursor: pointer;
+}
+
+/* Картинка */
+div.block_rqst>div.img {
+    width: 40%;
+    height: 80%;
+    background-image: url("../pictures/request/request_1.png");
+}

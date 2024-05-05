@@ -1,0 +1,31 @@
+footer {
+    width: 100vw;
+    height: 15vh;
+    background-color: #392727;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer>div {
+    width: 20%;
+    height: 70%;
+    margin: 5%;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-left: 1px solid #ffffff;
+}
+footer>div>a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 2%;
+    font-size: 100%;
+}
+footer>div>p {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 2%;
+    font-size: 100%;
+}

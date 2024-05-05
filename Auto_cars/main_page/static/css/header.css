@@ -1,0 +1,50 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+    margin: 0px;
+    background-color: #ffffff;
+    font-family: "Inter", sans-serif;
+}
+
+/* Пустой блок с названием компании */
+header>div.name_block {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+header>div.name_block>p.name {
+    margin-left: 10%;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+/* Конец название компании */
+
+/* Стили кнопок перехода */
+header>div.btn {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header>div.btn>a.link_btn {
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+header>div.btn>a.link_btn:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+/* конец стилей кнопок перехода */
+header>div.empty {
+    width: 20%;
+    height: 100%;
+
+}
