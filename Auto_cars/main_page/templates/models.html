@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block main %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/models.css' %}">
+</head>
+<!-- Блок поиска -->
+<div class="search">
+    <form method="post" action="{% url 'show_cars' %}">
+        {% csrf_token %}
+       <input id="search" name="search_text" type="text" placeholder="Введите название автомобиля">
+        <select name="mark" id="marka" >
+            <option value="Марка">Марка машины</option>
+            {% for brand_name in car_brand %}
+                <option value="{{ brand_name }}">{{ brand_name }}</option>
+            {% endfor %}
+        </select>
+        <select name="status" id="status">
+            <option value="Состояние машины">Состояние машины</option>
+            {% for state_value in state %}
+                <option value="{{ state_value }}">{{ state_value }}</option>
+            {% endfor %}
+        </select>
+        <select name="type" id="type">
+            <option value="Тип кузова">Тип кузова</option>
+            {% for type in car_type %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="mileage_ot" id="mileage" placeholder="Пробег от">
+        <input type="number" name="mileage_do" id="mileage"placeholder="Пробег до">
+        <button type="submit">Найти</button> 
+    </form>
+    
+</div>
+
+{% if message %}
+    <div class="message" id="popup">
+        <div class="text">
+            <span class="close-btn" onclick="closeMessage()">X</span>
+            {{ message }}
+        </div>
+    </div>
+{% endif %}
+<!-- Конец блока поиска -->
+<!-- Блок списка машин -->
+<div class="car_list">
+    {% if filtered_cars %}
+        {% for car_data in filtered_cars %}
+            <div class="car_info">
+                <img src="{% url 'get_car_image' car_id=car_data.car.id %}" alt="car_img">
+                <div class="car_info_text">
+                <h3>{{ car_data.car.brand }} {{ car_data.car.model }}</h3>
+                <p><span>Пробег: </span>{{car_data.characteristic.mileage|spacecomma }} км</p>
+                <p><span>Год: </span>{{car_data.characteristic.year_of_issue }}</p>
+                <p><span>Владельцев: </span>{{car_data.characteristic.car_owners }}</p>
+                <p><span>Состояние машины: </span>{{ car_data.characteristic.car_condition }}</p>
+                <p><span>Тип машины: </span>{{ car_data.characteristic.car_type }}</p>
+                <h4>Автосолон {{ car_data.salon.name }}</h4>
+                <p>Казань, {{ car_data.salon.address }}</p>
+                <h3>Цена - {{ car_data.car.price|spacecomma }} руб</h3>
+                <button onclick="scrollToForm()">Оставить заявку</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for car_data in cars_data %}
+            <div class="car_info">
+                <img src="{% url 'get_car_image' car_id=car_data.car.id %}" alt="car_img">
+                <div class="car_info_text">
+                <h3>{{ car_data.car.brand }} {{ car_data.car.model }}</h3>
+                <p><span>Пробег: </span>{{car_data.characteristic.mileage|spacecomma }} км</p>
+                <p><span>Год: </span>{{car_data.characteristic.year_of_issue }}</p>
+                <p><span>Владельцев: </span>{{car_data.characteristic.car_owners }}</p>
+                <p><span>Состояние машины: </span>{{ car_data.characteristic.car_condition }}</p>
+                <p><span>Тип машины: </span>{{ car_data.characteristic.car_type }}</p>
+                <h4>Автосолон {{ car_data.salon.name }}</h4>
+                <p>Казань, {{ car_data.salon.address }}</p>
+                <h3>Цена - {{ car_data.car.price|spacecomma }} руб</h3>
+                <button onclick="scrollToForm()">Оставить заявку</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+</div>
+<!-- Конец блока списка машин -->
+<!-- Блок fa -->
+<div class="block_fa">
+    <h1>Преимущества <span>нашего сервиса</span></h1>
+    <div class="b_fa_text_box_full">
+        <div class="b_fa_text_box">
+            <h2>Гарантии</h2>
+            <p>Сохранение заводской гарантии
+                Двухлетняя гарантия на оригинальные детали и аксессуары
+                Гарантия на выполненные сервисные работы</p>
+        </div>
+        <div class="b_fa_text_box">
+            <h2>Удобство и комфорт</h2>
+            <p>Обеспечение мобильности <br>Всегда на связи
+                Комфортные условия в сервисных центрах</p>
+        </div>
+    </div>
+    <form id="form" onsubmit="return validateForm()" method="post" action="{% url 'create_application' %}"  class="b_fa_reg_box">
+        <h2>Оформите заявку</h2>
+        {% csrf_token %}
+        <input type="text" name="name" id="name" placeholder="Введите имя">
+        <input type="email" name="email" id="email" placeholder="Введите почту">
+        <input type="tel" id="phone" name="phone" placeholder="Введите телефон"  maxlength="12">
+        <button type="submit">Закажите звонок</button>
+    </form>
+</div>
+<script>
+    function closeMessage() {
+        var messageWindow = document.getElementById('popup');
+        messageWindow.style.display = 'none';
+    }
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        if (name.trim() === '' || email.trim() === '' || phone.trim() === '') {
+            alert('Заполните все поля!');
+            return false; // Отменить отправку формы
+        }
+
+        // Все поля заполнены, можно отправлять форму
+        return true;
+    }
+
+    function scrollToForm() {
+        // Получаем элемент по его ID
+        var formElement = document.getElementById('form');
+
+        // Прокручиваем страницу к этому элементу
+        formElement.scrollIntoView({ behavior: 'smooth' }); // Используем плавную прокрутку
+    }
+</script>
+<!-- Конец блока fa -->
+{% endblock %}

@@ -17,7 +17,7 @@
             <p>Найти дилера
             Карта дилеров</p>
         </div>
-        <button>Рассчитать условия</button>
+        <button onclick="scrollToForm()">Рассчитать условия</button>
     </div>
 </div>
 <!-- Конец блока 1 -->
@@ -26,7 +26,7 @@
     <div class="b_2_text_box">
         <h1>Покупка машин <br><span>самых разных марок</span></h1>
         <p>В нашем магазине представлены машины разных марок! Выберии цвет и город в котором преобретаешь.</p>
-        <button>Купить машину мечты</button>
+        <button onclick="scrollToForm()">Купить машину мечты</button>
     </div>
     <div class="b_2_img_box">
         <div class="img_1"></div>
@@ -43,9 +43,17 @@
         <p>Преимущество до 705 000 руб.
             Предложение действует до 20.10.2021. Подробности уточняйте в чате 
             тех-поддержки.</p>
-        <button>Узнать подробнее</button>
+        <button onclick="scrollToForm()">Узнать подробнее</button>
     </div>
 </div>
+{% if message %}
+    <div class="message" id="popup">
+        <div class="text">
+            <span class="close-btn" onclick="closeMessage()">X</span>
+            {{ message }}
+        </div>
+    </div>
+{% endif %}
 <!-- Конец блока 3 -->
 <!-- Блок fa -->
 <div class="block_fa">
@@ -63,13 +71,41 @@
                 Комфортные условия в сервисных центрах</p>
         </div>
     </div>
-    <div class="b_fa_reg_box">
+    <form id="form" onsubmit="return validateForm()" method="post" action="{% url 'create_application' %}"  class="b_fa_reg_box">
         <h2>Оформите заявку</h2>
-        <input type="text" name="Введите имя" id="name" placeholder="Введите имя">
-        <input type="email" name="Введите почту" id="mail" placeholder="Введите почту">
-        <input type="text" name="Введите телефон" id="phone" placeholder="Ввведите телефон">
-        <button>Закажите звонок</button>
-    </div>
+        {% csrf_token %}
+        <input type="text" name="name" id="name" placeholder="Введите имя">
+        <input type="email" name="email" id="email" placeholder="Введите почту">
+        <input type="tel" id="phone" name="phone" placeholder="Введите телефон"  maxlength="12">
+        <button type="submit">Закажите звонок</button>
+    </form>
 </div>
 <!-- Конец блока fa -->
+<script>
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        if (name.trim() === '' || email.trim() === '' || phone.trim() === '') {
+            alert('Заполните все поля!');
+            return false; // Отменить отправку формы
+        }
+
+        // Все поля заполнены, можно отправлять форму
+        return true;
+    }
+
+    function scrollToForm() {
+        // Получаем элемент по его ID
+        var formElement = document.getElementById('form');
+
+        // Прокручиваем страницу к этому элементу
+        formElement.scrollIntoView({ behavior: 'smooth' }); // Используем плавную прокрутку
+    }
+    function closeMessage() {
+        var messageWindow = document.getElementById('popup');
+        messageWindow.style.display = 'none';
+    }
+</script>
 {% endblock %}

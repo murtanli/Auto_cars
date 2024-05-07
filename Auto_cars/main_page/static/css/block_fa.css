@@ -45,11 +45,11 @@ div.block_fa>div.b_fa_text_box_full>div.b_fa_text_box>h2 {
 div.block_fa>div.b_fa_text_box_full>div.b_fa_text_box>p {
     margin-left: 7%;
     margin-top: 5%;
-    font-size: 1.3em;
+    font-size: 1vw;
 }
 /* Блок заявки */
-div.block_fa>div.b_fa_reg_box {
-    height: 70%;
+div.block_fa>form.b_fa_reg_box {
+    /* height: 70%; */
     width: 20%;
     margin-right: 20%;
     box-shadow: 15px 15px 20px 0 #a3a3a3;
@@ -59,11 +59,11 @@ div.block_fa>div.b_fa_reg_box {
     align-items: center;
     flex-direction: column;
 }
-div.block_fa>div.b_fa_reg_box>h2 {
+div.block_fa>form.b_fa_reg_box>h2 {
     margin-bottom: 20%;
     margin-top: 15%;
 }
-div.block_fa>div.b_fa_reg_box>input {
+div.block_fa>form.b_fa_reg_box>input {
     border: none;
     border-bottom: 2px solid #000000;
     background: transparent;
@@ -74,22 +74,24 @@ div.block_fa>div.b_fa_reg_box>input {
     background-color: #e7e5e5;
     transition: border-color 50ms ease-out;
 }
-div.block_fa>div.b_fa_reg_box>input:focus {
+div.block_fa>form.b_fa_reg_box>input:focus {
     content: none;
     outline: 0;
     box-shadow: none;
     border-bottom-color: #026196;
 }
-div.block_fa>div.b_fa_reg_box>button {
+div.block_fa>form.b_fa_reg_box>button {
     width: 70%;
-    height: 9%;
+    height: 5vh;
     border-radius: 25px;
     border: none;
     background-color: #026196;
     color: #ffffff;
     font-size: 1.3em;
+    margin-bottom: 10vh;
+    font-size: 1.2vw;
 }
-div.block_fa>div.b_fa_reg_box>button:hover {
+div.block_fa>form.b_fa_reg_box>button:hover {
     background-color: #01507a;
     cursor: pointer;
 }
