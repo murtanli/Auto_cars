@@ -35,9 +35,13 @@ div.photo>h2>span {
 }
 div.photo>img {
     width: 33vw;
+    transition: 0.5s ease;
 }
 div.photo>img[alt = 'p_v_2.png'],
 div.photo>img[alt = 'p_v_5.png'],
 div.photo>img[alt = 'p_v_8.png'] {
     width: 34vw;
+}
+div.photo > img:hover {
+    opacity: 0.7;
 }

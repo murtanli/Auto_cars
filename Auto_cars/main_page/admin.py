@@ -41,4 +41,4 @@ class SalonAdmin(admin.ModelAdmin):
 
 @admin.register(Applications)
 class ApplicationsAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'email', 'number_phone')
+    list_display = ('pk', 'selected_car', 'status', 'name', 'email', 'number_phone')

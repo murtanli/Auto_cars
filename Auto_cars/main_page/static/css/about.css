@@ -11,7 +11,7 @@ div.info_1 {
     margin: 0px;
     height: 60vh;
     width: 100vw;
-    background-image: url("../pictures/about/about_1.png");
+    background-image: url("../images/about_1.png");
     background-size: cover;
     display: flex;
 }
@@ -30,6 +30,7 @@ div.info_1>div.info_text_box>p.text_1,
 div.info_1>div.info_text_box>p.text_2 {
     width: 80%;
     margin-left: 5%;
+    font-size: 1.2vw;
 }
 div.info_1>div.info_text_box>p.text_1>span {
     color: #C10303;
@@ -39,7 +40,7 @@ div.info_2 {
     margin-bottom: 5vh;
     height: 60vh;
     width: 100vw;
-    background-image: url("../pictures/about/about_2.png");
+    background-image: url("../images/about_2.png");
     background-size: cover;
     display: flex;
     justify-content: end;
@@ -59,4 +60,5 @@ div.info_2>div.info_text_box>p.text_1,
 div.info_2>div.info_text_box>p.text_2 {
     width: 80%;
     margin-left: 5%;
+    font-size: 1.2vw;
 }

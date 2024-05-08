@@ -1,74 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/request.css">
-    <link rel="stylesheet" href="../css/blocks/header.css">
-    <link rel="stylesheet" href="../css/blocks/footer.css">
-    <link rel="stylesheet" href="../css/blocks/block_fa.css">
-    <title>AUTODEALER</title>
+    <link rel="stylesheet" href="{% static 'css/request.css' %}">
 </head>
-<body>
-    <header>
-        <div class="name_block">
-            <p class="name">AUTODEALER</p>
-        </div>
-        <div class="btn">
-            <a href="main.html" class="link_btn">ГЛАВНАЯ</a>
-        </div>
-        <div class="btn">
-            <a href="models.html" class="link_btn">МОДЕЛИ</a>
-        </div>
-        <div class="btn">
-            <a href="photo_video.html" class="link_btn">ФОТО И ВИДЕО</a>
-        </div>
-        <div class="btn">
-            <a href="request.html" class="link_btn">ПОКУПАТЕЛЯМ</a>
-        </div>
-        <div class="btn">
-            <a href="about.html" class="link_btn">О КОМПАНИИ</a>
-        </div>
-        <div class="btn">
-            <a href="contacts.html" class="link_btn">КОНТАКТЫ</a>
-        </div>
-        <div class="empty">
-
-        </div>
-    </header>
-    <main>
-        <div class="block_rqst">
-            <div class="input_rqst">
-                <h1>Запись на покупку атомобиля</h1>
-                <h2><span>Оставить заявку на покупку автомобиля</span></h2>
-                <div class="name">
-                    <p>Введите имя</p>
-                    <input type="text" id="name" placeholder="Введите имя">
-                </div>
-                <div class="phone">
-                    <p>Введите телефон</p>
-                    <input type="text" id="phone" placeholder="Введите телефон">
-                </div>
-                <div class="car_input">
-                    <p>Введите марку и модель автомобиля</p>
-                    <input type="text" id="car" placeholder="Введите марку и модель автомобиля">
-                </div>
-                <button>Подать заявку</button>
+<div class="block_rqst">
+    <div class="input_rqst">
+        <form action="{% url 'create_application' %}" method="post">
+            {% csrf_token %}
+            <h1>Запись на покупку атомобиля</h1>
+            <h2><span>Оставить заявку на покупку автомобиля</span></h2>
+            <div class="name">
+                <p>Введите имя</p>
+                <input type="text" id="name" name="name" placeholder="Введите имя">
             </div>
-            <div class="img"></div>
-        </div>
-    </main>
-    <footer>
-        <div>
-            <a href="#" id="main">Главная</a>
-            <a href="#" id="cars">Покупка машин</a>
-            <a href="#" id="special">Спецпредлложение</a>
-        </div>
-        <div>
-            <p>КОНТАКТЫ</p>
-            <p>Тел.: +7 (***)***-**-**</p>
-            <p>Электронная почта: ********@mail.ru</p>
-        </div>
-    </footer>
-</body>
-</html>
+            <div class="phone">
+                <p>Введите телефон</p>
+                <input type="text" id="phone" name="phone" placeholder="Введите телефон">
+            </div>
+            <div class="car_input">
+                <p>Введите марку и модель автомобиля</p>
+                <input type="text" id="car" name="car" placeholder="Введите марку и модель автомобиля">
+            </div>
+            <button type="submit">Подать заявку</button>
+        </form>
+        
+    </div>
+    <!-- <form id="form" onsubmit="return validateForm()" method="post" action="{% url 'create_application' %}"  class="input_rqst">
+        <h2>Оформите заявку</h2>
+        {% csrf_token %}
+        <input type="text" name="name" id="name" placeholder="Введите имя">
+        <input type="email" name="email" id="email" placeholder="Введите почту">
+        <input type="tel" id="phone" name="phone" placeholder="Введите телефон"  maxlength="12">
+        <button type="submit">Закажите звонок</button>
+    </form> -->
+    <div class="img"></div>
+</div>
+{% endblock %}

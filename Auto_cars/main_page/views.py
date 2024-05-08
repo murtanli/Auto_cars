@@ -33,7 +33,6 @@ def show_cars(request):
             mileage_do = 0
 
         filters = {}
-        print(f"{search_text}  {mark}  {status}  {car_type} {mileage_ot} {mileage_do}")
         if search_text:
             filters['model__icontains'] = search_text
 
@@ -89,10 +88,13 @@ def create_application(request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
 
+        sel_car = request.POST.get('car')
+
         application = Applications.objects.create(
             name=name,
             email=email,
-            number_phone=phone
+            number_phone=phone,
+            selected_car=sel_car
         )
         application.save()
     params = urlencode({'message': 'Отправлено !'})
@@ -101,3 +103,16 @@ def get_car_image(request, car_id):
     car = get_object_or_404(Car, pk=car_id)
     image_path = car.image.path
     return FileResponse(open(image_path, 'rb'), content_type='image/jpeg')
+
+
+def photo_and_video(request):
+    return render(request, 'photo_video.html')
+
+def buyers(request):
+    return render(request, "request.html")
+
+def about(request):
+    return render(request, "about.html")
+
+def contacts(request):
+    return render(request, "contacts.html")

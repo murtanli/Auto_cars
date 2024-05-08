@@ -22,16 +22,16 @@
             <a href="{% url 'show_cars' %}" class="link_btn">МОДЕЛИ</a>
         </div>
         <div class="btn">
-            <a href="photo_video.html" class="link_btn">ФОТО И ВИДЕО</a>
+            <a href="{% url 'photo_and_video' %}" class="link_btn">ФОТО И ВИДЕО</a>
         </div>
         <div class="btn">
-            <a href="request.html" class="link_btn">ПОКУПАТЕЛЯМ</a>
+            <a href="{% url 'buyers' %}" class="link_btn">ПОКУПАТЕЛЯМ</a>
         </div>
         <div class="btn">
-            <a href="about.html" class="link_btn">О КОМПАНИИ</a>
+            <a href="{% url 'about' %}" class="link_btn">О КОМПАНИИ</a>
         </div>
         <div class="btn">
-            <a href="contacts.html" class="link_btn">КОНТАКТЫ</a>
+            <a href="{% url 'contacts' %}" class="link_btn">КОНТАКТЫ</a>
         </div>
         <div class="empty">
 
@@ -45,9 +45,9 @@
     </main>
     <footer>
         <div>
-            <a href="#" id="main">Главная</a>
-            <a href="#" id="cars">Покупка машин</a>
-            <a href="#" id="special">Спецпредлложение</a>
+            <a href="{% url 'main' %}" id="main">Главная</a>
+            <a href="{% url 'show_cars' %}" id="cars">Покупка машин</a>
+            <a href="{% url 'show_cars' %}" id="special">Спецпредлложение</a>
         </div>
         <div>
             <p>КОНТАКТЫ</p>
