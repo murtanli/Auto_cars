@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -116,3 +119,42 @@ def about(request):
 
 def contacts(request):
     return render(request, "contacts.html")
+
+
+def auth(request):
+    if request.method == 'POST':
+        login_username = request.POST.get('login')  # Переименуйте переменную login
+        password = request.POST.get('password')
+        user = authenticate(username=login_username, password=password)  # Используйте новое имя переменной
+        if user is not None:
+            login(request, user)
+            return redirect('main')
+        else:
+            messages.error(request,'Неверный логин или пароль')
+
+    return render(request, "auth.html", )
+
+
+def sign_in(request):
+    if request.method == 'POST':
+        login_text = request.POST.get('login')
+        password_text = request.POST.get('password')
+
+        try:
+            # Создаем пользователя
+            user = User.objects.create_user(username=login_text, password=password_text)
+
+            messages.success(request, 'Регистрация прошла успешно!')
+            return redirect('auth')
+
+        except:
+            messages.error(request, 'Ошибка регистрации. Пользователь с таким логином уже существует.')
+
+        return redirect('sign_in')
+
+    else:
+        return render(request, 'sign_in.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('main')

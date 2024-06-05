@@ -33,6 +33,16 @@
         <div class="btn">
             <a href="{% url 'contacts' %}" class="link_btn">КОНТАКТЫ</a>
         </div>
+        {% if not request.user.is_authenticated %}
+            <div class="btn" style="width: 139vh;">
+                <a href="{% url 'auth' %}" class="link_btn">Авторизация / </a>
+                <a href="{% url 'sign_in' %}" class="link_btn">Регистраиця</a>
+            </div>
+        {% else %}
+            <div class="btn" style="width: 139vh;">
+                <a class="link_btn" href="{% url 'logout_view' %}">Выйти из аккаунта</a>
+            </div>
+        {% endif %}
         <div class="empty">
 
         </div>

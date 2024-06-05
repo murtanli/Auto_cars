@@ -26,7 +26,7 @@ header>div.name_block>p.name {
 
 /* Стили кнопок перехода */
 header>div.btn {
-    width: 10%;
+    width: 36%;
     height: 100%;
     display: flex;
     justify-content: center;
